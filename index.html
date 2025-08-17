@@ -267,6 +267,34 @@
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
+        
+        /* Estilos para el contenedor del video */
+        .video-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: var(--light-gray);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 (altura / ancho) */
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
         /* Testimonios */
         .testimonials {
@@ -550,6 +578,28 @@
             </div>
         </section>
 
+        <!-- NUEVA SECCIÓN: Video del Producto -->
+        <section class="video-section fade-in-section">
+            <div class="container">
+                <h2>Mira el video del producto</h2>
+                <div class="video-container">
+                    <!--
+                        Para incrustar un video, necesitas el código de inserción que te da YouTube.
+                        Ve a tu video en YouTube, haz clic en "Compartir" y luego en "Insertar".
+                        Copia el código que te dan y reemplaza el siguiente <iframe>.
+                    -->
+                    <iframe src="https://youtube.com/shorts/UCX6t3Qf6fA?feature=share" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- 
+                    Si prefieres subir el video a tu propio servidor, usa esta etiqueta en su lugar:
+                    <video controls muted autoplay playsinline style="width:100%; height:auto;">
+                        <source src="https://www.tuservidor.com/ruta-a-tu-video.mp4" type="video/mp4">
+                        Tu navegador no soporta el tag de video.
+                    </video>
+                -->
+            </div>
+        </section>
+        
         <!-- Testimonios de Clientes -->
         <section class="testimonials fade-in-section">
             <div class="container">

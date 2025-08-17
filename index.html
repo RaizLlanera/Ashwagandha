@@ -386,36 +386,43 @@
             transform: scale(1.1);
         }
 
-        /* Responsividad para móviles */
+        /* Estilos de responsividad para que la página se adapte a cualquier tamaño de pantalla */
+        /* Esta es la clave para que se vea bien en celulares y tabletas */
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
             }
 
             .header h1 {
-                font-size: 2rem;
+                font-size: 2rem; /* Reduce el tamaño del título en móviles */
             }
 
             .header h2 {
-                font-size: 1rem;
+                font-size: 1rem; /* Reduce el subtítulo para que no ocupe tanto espacio */
             }
 
             .benefits, .product-section, .testimonials, .guarantees, .promo-section, .experience-section {
                 padding: 2rem 1rem;
             }
 
-            .benefits-grid, .testimonials-grid {
+            /* Los grids se convierten en una sola columna en pantallas pequeñas */
+            .benefits-grid, .testimonials-grid, .guarantees-grid {
                 grid-template-columns: 1fr;
             }
 
+            /* Los contenedores flex se organizan verticalmente en pantallas pequeñas */
             .product-info, .promo-grid, .experience-section .content {
                 flex-direction: column;
             }
 
-            .guarantees-grid {
-                flex-direction: column;
+            /* Asegura que las imágenes no se desborden en móviles */
+            .product-section .product-image, .experience-section img {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
             }
 
+            /* Ajusta el tamaño del botón flotante para móviles */
             .whatsapp-float {
                 width: 50px;
                 height: 50px;

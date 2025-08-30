@@ -659,6 +659,20 @@
         }
 
         /* ESTILOS PARA EL MODAL DE ÉXITO */
+        .success-modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 1002;
+            backdrop-filter: blur(5px);
+        }
+
         .success-modal .modal-content {
             text-align: center;
             padding: 3rem;
@@ -934,13 +948,11 @@
             * Reemplaza "your@email.com" por tu dirección real.
             * Este es el atributo 'action' que envía el formulario.
             -->
-            <form action="https://formsubmit.co/jsrodriguezp14@gmail.com" method="POST">
+            <form id="orderForm" action="https://formsubmit.co/jsrodriguezp14@gmail.com" method="POST">
                 
                 <!-- Este campo oculto desactiva el reCAPTCHA de FormSubmit -->
                 <input type="hidden" name="_captcha" value="false">
-                <!-- Este campo redirige al usuario a una página de éxito después de enviar el formulario -->
-                <input type="hidden" name="_next" value="">
-
+                
                 <div class="form-group">
                     <label for="nombres">Nombres</label>
                     <input type="text" id="nombres" name="Nombres" placeholder="Ingresa tus nombres" required>
@@ -1016,6 +1028,16 @@
             <!-- ¡FIN DE LA INTEGRACIÓN DE FORMSUBMIT! -->
         </div>
     </div>
+
+    <!-- MODAL DE ÉXITO -->
+    <div id="successModal" class="success-modal">
+        <div class="modal-content">
+            <i class="fa-solid fa-check-circle"></i>
+            <h2>¡Pedido Enviado!</h2>
+            <p>Tu pedido ha sido procesado con éxito. En breve nos pondremos en contacto contigo para confirmar los detalles.</p>
+            <button class="cta-button" onclick="closeSuccessModal()">Volver al inicio</button>
+        </div>
+    </div>
     
     <!-- JavaScript para el temporizador, animaciones y el formulario -->
     <script>
@@ -1026,7 +1048,7 @@
             "Arauca": ["Arauca","Arauquita","Cravo Norte","Fortul","Puerto Rondón","Saravena","Tame"],
             "Atlántico": ["Barranquilla","Baranoa","Campo de la Cruz","Candelaria","Galapa","Juan de Acosta","Luruaco","Malambo","Manatí","Palmar de Varela","Piojó","Polonuevo","Ponedera","Puerto Colombia","Repelón","Sabanagrande","Sabanalarga","Santa Lucía","Santo Tomás","Soledad","Suan","Tubará","Usiacurí"],
             "Bolívar": ["Cartagena de Indias","Achí","Altos del Rosario","Arenal","Arjona","Arroyohondo","Barranco de Loba","Calamar","Cantagallo","Cicuco","Clemencia","Córdoba","El Carmen de Bolívar","El Guamo","El Peñón","Hatillo de Loba","Magangué","Mahates","Margarita","María La Baja","Mompós","Montecristo","Morales","Norosí","Pinillos","Regidor","Río Viejo","San Cristóbal","San Estanislao","San Fernando","San Jacinto","San Jacinto del Cauca","San Juan Nepomuceno","San Martín de Loba","San Pablo","Santa Catalina","Santa Rosa","Santa Rosa del Sur","Simití","Soplaviento","Talaigua Nuevo","Tiquisio","Turbaco","Turbaná","Zambrano"],
-            "Boyacá": ["Tunja","Almeida","Aquitania","Arcabuco","Belén","Berbeo","Betéitiva","Boavita","Boyacá","Briceño","Buenavista","Busbanzá","Caldas","Campohermoso","Cerinza","Chinavita","Chiquinquirá","Chiscas","Chita","Chitaraque","Chivatá","Chíquiza","Ciénega","Cómbita","Coper","Corrales","Cucaita","Cuítiva","Duitama","El Cocuy","El Espino","Firavitoba","Floresta","Gachantivá","Gámeza","Garagoa","Guacamayas","Guateque","Guayatá","Güicán de La Sierra","Iza","Jenesano","Jericó","La Capilla","La Uvita","La Victoria","Labranzagrande","Leiva","Macanal","Maripí","Miraflores","Mongua","Monguí","Moniquirá","Motavita","Muzo","Nobsa","Nuevo Colón","Oicatá","Otanche","Páez","Paipa","Pajarito","Panqueba","Pauna","Paya","Paz de Río","Pesca","Pisba","Puerto Boyacá","Quípama","Ramiriquí","Ráquira","Rondón","Saboyá","Sáchica","Samacá","San Eduardo","San Mateo","San Miguel de Sema","San Pablo de Borbur","Santa María","Santa Rosa de Viterbo","Santa Sofía","Santana","Sativanorte","Sativasur","Siachoque","Soatá","Socha","Sogamoso","Somondoco","Sora","Soracá","Sotaquirá","Susacón","Sutatenza","Tasco","Tenza","Tibaná","Tinjacá","Tipacoque","Toca","Toguí","Topaga","Tota","Turmequé","Tutazá","Umbita","Ventaquemada","Villa de Leyva","Viracachá","Zetaquira"],
+            "Boyacá": ["Tunja","Almeida","Aquitania","Arcabuco","Belén","Berbeo","Betéitiva","Boavita","Boyacá","Briceño","Buenavista","Busbanzá","Caldas","Campohermoso","Cerinza","Chinavita","Chiquinquirá","Chiscas","Chita","Chitaraque","Chivatá","Chíquiza","Ciénega","Cómbita","Coper","Corrales","Cucaita","Cuítiva","Duitama","El Cocuy","El Espino","Firavitoba","Floresta","Gachantivá","Gámeza","Garagoa","Guacamayas","Guateque","Guayatá","Güicán de La Sierra","Iza","Jenesano","Jericó","La Capilla","La Uvita","La Victoria","Labranzagrande","Leiva","Macanal","Maripí","Miraflores","Mongua","Monguí","Moniquirá","Motavita","Muzo","Nobsa","Nuevo Colón","Oicatá","Otanche","Páez","Paipa","Pajarito","Panqueba","Pauna","Paya","Paz de Río","Pesca","Pisba","Puerto Boyacá","Quípama","Ráquira","Ramiriquí","Rondón","Saboyá","Sáchica","Samacá","San Eduardo","San Mateo","San Miguel de Sema","San Pablo de Borbur","Santa María","Santa Rosa de Viterbo","Santa Sofía","Santana","Sativanorte","Sativasur","Siachoque","Soatá","Socha","Sogamoso","Somondoco","Sora","Soracá","Sotaquirá","Susacón","Sutatenza","Tasco","Tenza","Tibaná","Tinjacá","Tipacoque","Toca","Toguí","Topaga","Tota","Turmequé","Tutazá","Umbita","Ventaquemada","Villa de Leyva","Viracachá","Zetaquira"],
             "Caldas": ["Manizales","Aguadas","Anserma","Aranzazu","Belalcázar","Chinchiná","Filadelfia","La Dorada","La Merced","La Victoria","Manzanares","Marmato","Marquetalia","Marulanda","Neira","Norcasia","Pácora","Palestina","Pensilvania","Riosucio","Risaralda","Salamina","Samaná","Samaná","San José","Supía","Villamaría","Viterbo"],
             "Caquetá": ["Florencia","Albania","Belén de los Andaquíes","Cartagena del Chairá","Curillo","El Doncello","El Paujil","La Montañita","Milán","Morelia","Puerto Rico","San José del Fragua","San Vicente del Caguán","Solano","Solita","Valparaíso"],
             "Casanare": ["Yopal","Aguazul","Chámeza","Hato Corozal","La Salina","Maní","Monterrey","Nunchía","Orocué","Paz de Ariporo","Pore","Recetor","Sabanalarga","Sácama","San Luis de Palenque","Támara","Tauramena","Trinidad","Villanueva"],
@@ -1057,6 +1079,9 @@
         
         const departamentoSelect = document.getElementById('departamento');
         const ciudadSelect = document.getElementById('ciudad');
+        const orderForm = document.getElementById('orderForm');
+        const successModal = document.getElementById('successModal');
+        const buyNowModal = document.getElementById('buyNowModal');
         
         /**
          * Maneja el cambio en el select de departamentos para actualizar el de ciudades.
@@ -1080,6 +1105,25 @@
             } else {
                 ciudadSelect.innerHTML = '<option value="" disabled selected>No se encontraron ciudades</option>';
             }
+        });
+
+        // Manejar el envío del formulario para mostrar el modal de éxito
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Evita el envío predeterminado del formulario
+
+            // Simula el envío (en un entorno real aquí harías un fetch)
+            const formData = new FormData(orderForm);
+            fetch(orderForm.action, {
+                method: 'POST',
+                body: formData,
+            }).then(() => {
+                // Si el envío fue exitoso, cierra el formulario y muestra el modal de éxito
+                closeFormModal();
+                showSuccessModal();
+            }).catch(error => {
+                console.error('Error al enviar el formulario:', error);
+                // Si hay un error, puedes mostrar un modal de error
+            });
         });
 
         // Función para actualizar el temporizador cada segundo
@@ -1181,8 +1225,6 @@
         });
 
         // Funciones para el modal de formulario
-        const buyNowModal = document.getElementById('buyNowModal');
-        
         function openFormModal() {
             buyNowModal.style.display = 'flex';
             setTimeout(() => {
@@ -1204,6 +1246,17 @@
             }
         });
         
+        // Funciones para el modal de éxito
+        function showSuccessModal() {
+            successModal.style.display = 'flex';
+        }
+
+        function closeSuccessModal() {
+            successModal.style.display = 'none';
+            // Volver a la página de inicio o a la parte superior
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // Llamar a la función al cargar la página
         window.onload = () => {
             updateCountdown();

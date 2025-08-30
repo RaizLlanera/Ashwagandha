@@ -927,93 +927,81 @@
         <div class="modal-content">
             <span class="close-button" onclick="closeFormModal()">&times;</span>
             <h2>Información de Envío</h2>
-            <!--
-            ************************************************
-            * AQUÍ DEBES PEGAR TU CORREO         *
-            ************************************************
-            * Reemplaza "your@email.com" por tu dirección real.
-            * Este es el atributo 'action' que envía el formulario.
-            -->
-            <form action="https://formsubmit.co/jsrodriguezp14@gmail.com" method="POST">
-                
-                <!-- Este campo oculto desactiva el reCAPTCHA de FormSubmit -->
-                <input type="hidden" name="_captcha" value="false">
-                <!-- Este campo redirige al usuario a una página de éxito después de enviar el formulario -->
-                <input type="hidden" name="_next" value="https://formsubmit.co/your@email.com/thanks">
-
-                <div class="form-group">
-                    <label for="nombres">Nombres</label>
-                    <input type="text" id="nombres" name="Nombres" placeholder="Ingresa tus nombres" required>
-                </div>
-                <div class="form-group">
-                    <label for="apellidos">Apellidos</label>
-                    <input type="text" id="apellidos" name="Apellidos" placeholder="Ingresa tus apellidos" required>
-                </div>
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="text" id="telefono" name="Teléfono" placeholder="+57 320 1234567" required>
-                    <small>Formato: +57 1234567890</small>
-                </div>
-                
-                <!-- Campos de Departamento y Ciudad ahora son selectores -->
-                <div class="form-group">
-                    <label for="departamento">Departamento</label>
-                    <select id="departamento" name="Departamento" required>
-                        <option value="" disabled selected>Selecciona un departamento</option>
-                        <option value="Amazonas">Amazonas</option>
-                        <option value="Antioquia">Antioquia</option>
-                        <option value="Arauca">Arauca</option>
-                        <option value="Atlántico">Atlántico</option>
-                        <option value="Bolívar">Bolívar</option>
-                        <option value="Boyacá">Boyacá</option>
-                        <option value="Caldas">Caldas</option>
-                        <option value="Caquetá">Caquetá</option>
-                        <option value="Casanare">Casanare</option>
-                        <option value="Cauca">Cauca</option>
-                        <option value="Cesar">Cesar</option>
-                        <option value="Chocó">Chocó</option>
-                        <option value="Córdoba">Córdoba</option>
-                        <option value="Cundinamarca">Cundinamarca</option>
-                        <option value="Guainía">Guainía</option>
-                        <option value="Guaviare">Guaviare</option>
-                        <option value="Huila">Huila</option>
-                        <option value="La Guajira">La Guajira</option>
-                        <option value="Magdalena">Magdalena</option>
-                        <option value="Meta">Meta</option>
-                        <option value="Nariño">Nariño</option>
-                        <option value="Norte de Santander">Norte de Santander</option>
-                        <option value="Putumayo">Putumayo</option>
-                        <option value="Quindío">Quindío</option>
-                        <option value="Risaralda">Risaralda</option>
-                        <option value="San Andrés y Providencia">San Andrés y Providencia</option>
-                        <option value="Santander">Santander</option>
-                        <option value="Sucre">Sucre</option>
-                        <option value="Tolima">Tolima</option>
-                        <option value="Valle del Cauca">Valle del Cauca</option>
-                        <option value="Vaupés">Vaupés</option>
-                        <option value="Vichada">Vichada</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="ciudad">Ciudad o Pueblo</label>
-                    <select id="ciudad" name="Ciudad" required disabled>
-                        <option value="" disabled selected>Primero selecciona un departamento</option>
-                    </select>
-                </div>
-                <!-- Fin de los nuevos campos -->
-                
-                <div class="form-group">
-                    <label for="direccion">Dirección y Complementos</label>
-                    <textarea id="direccion" name="Dirección" rows="3" placeholder="Ej: Calle 123 #45-67, Apto 809, Torre 2" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="Correo Electrónico" placeholder="tu.correo@ejemplo.com" required>
-                </div>
-                <button type="submit" class="cta-button" style="width: 100%;">Enviar Pedido</button>
-            </form>
-            <!-- ¡FIN DE LA INTEGRACIÓN DE FORMSUBMIT! -->
+            
+            <div class="form-group">
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" placeholder="Ingresa tus nombres" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" placeholder="Ingresa tus apellidos" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="text" id="telefono" placeholder="+57 320 1234567" required>
+                <small>Formato: +57 1234567890</small>
+            </div>
+            
+            <!-- Campos de Departamento y Ciudad ahora son selectores -->
+            <div class="form-group">
+                <label for="departamento">Departamento</label>
+                <select id="departamento" required>
+                    <option value="" disabled selected>Selecciona un departamento</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Antioquia">Antioquia</option>
+                    <option value="Arauca">Arauca</option>
+                    <option value="Atlántico">Atlántico</option>
+                    <option value="Bolívar">Bolívar</option>
+                    <option value="Boyacá">Boyacá</option>
+                    <option value="Caldas">Caldas</option>
+                    <option value="Caquetá">Caquetá</option>
+                    <option value="Casanare">Casanare</option>
+                    <option value="Cauca">Cauca</option>
+                    <option value="Cesar">Cesar</option>
+                    <option value="Chocó">Chocó</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Cundinamarca">Cundinamarca</option>
+                    <option value="Guainía">Guainía</option>
+                    <option value="Guaviare">Guaviare</option>
+                    <option value="Huila">Huila</option>
+                    <option value="La Guajira">La Guajira</option>
+                    <option value="Magdalena">Magdalena</option>
+                    <option value="Meta">Meta</option>
+                    <option value="Nariño">Nariño</option>
+                    <option value="Norte de Santander">Norte de Santander</option>
+                    <option value="Putumayo">Putumayo</option>
+                    <option value="Quindío">Quindío</option>
+                    <option value="Risaralda">Risaralda</option>
+                    <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+                    <option value="Santander">Santander</option>
+                    <option value="Sucre">Sucre</option>
+                    <option value="Tolima">Tolima</option>
+                    <option value="Valle del Cauca">Valle del Cauca</option>
+                    <option value="Vaupés">Vaupés</option>
+                    <option value="Vichada">Vichada</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="ciudad">Ciudad o Pueblo</label>
+                <select id="ciudad" required disabled>
+                    <option value="" disabled selected>Primero selecciona un departamento</option>
+                </select>
+            </div>
+            <!-- Fin de los nuevos campos -->
+            
+            <div class="form-group">
+                <label for="direccion">Dirección y Complementos</label>
+                <textarea id="direccion" rows="3" placeholder="Ej: Calle 123 #45-67, Apto 809, Torre 2" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" placeholder="tu.correo@ejemplo.com" required>
+            </div>
+            
+            <!-- Botón de envío que activa la función JavaScript -->
+            <button class="cta-button" style="width: 100%;" onclick="sendWhatsAppMessage()">Enviar Pedido por WhatsApp</button>
+            
         </div>
     </div>
     
@@ -1203,6 +1191,46 @@
                 closeFormModal();
             }
         });
+
+        // Nueva función para enviar el mensaje por WhatsApp
+        function sendWhatsAppMessage() {
+            // ** Reemplaza "3224807578" con tu número de teléfono de WhatsApp, incluyendo el código del país. **
+            const whatsappNumber = "3224807578";
+
+            // Recopila los datos del formulario
+            const nombres = document.getElementById("nombres").value;
+            const apellidos = document.getElementById("apellidos").value;
+            const telefono = document.getElementById("telefono").value;
+            const departamento = document.getElementById("departamento").value;
+            const ciudad = document.getElementById("ciudad").value;
+            const direccion = document.getElementById("direccion").value;
+            const email = document.getElementById("email").value;
+
+            // Valida que todos los campos requeridos estén llenos
+            if (!nombres || !apellidos || !telefono || !departamento || !ciudad || !direccion || !email) {
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            // Construye el mensaje con los datos del formulario
+            const message = `¡Hola! Me gustaría hacer un pedido.\n\n` +
+                            `*Detalles del pedido:*\n` +
+                            `- Nombre: ${nombres} ${apellidos}\n` +
+                            `- Teléfono: ${telefono}\n` +
+                            `- Correo: ${email}\n` +
+                            `- Dirección: ${direccion}, ${ciudad}, ${departamento}\n\n` +
+                            `Estoy interesado en la oferta de Super Magnesio & Ashwagandha.`;
+
+            // Codifica el mensaje para que sea una URL segura
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Crea la URL de WhatsApp y la abre en una nueva pestaña
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, "_blank");
+
+            // Cierra el modal después de enviar
+            closeFormModal();
+        }
         
         // Llamar a la función al cargar la página
         window.onload = () => {

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome para íconos de redes sociales -->
+    <!-- Font Awesome para íconos de redes sociales y WhatsApp -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Variables de colores */
@@ -18,6 +18,8 @@
             --white: #ffffff;
             --light-gray: #f4f4f4;
             --text-color: #333;
+            --highlight-green: #4CAF50; /* Nuevo color verde para resaltar */
+            --darker-green: #0e301e; /* Nuevo color verde más oscuro */
         }
 
         /* Estilos generales y reset */
@@ -230,6 +232,7 @@
             display: inline-block;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -330,6 +333,123 @@
             margin-bottom: 1rem;
             border: 3px solid var(--gold);
             object-fit: cover;
+        }
+
+        /* SECCIÓN DE CONFIANZA Y ENVÍO CON LA NUEVA ANIMACIÓN */
+        .trust-delivery-section {
+            background-color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .trust-delivery-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
+        .trust-delivery-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+        
+        /* ESTILO Y ANIMACIÓN PARA LA SECCIÓN DE ENVÍO Y PAGO */
+        .delivery-info {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: var(--white);
+            background: linear-gradient(45deg, var(--darker-green), var(--dark-green), var(--darker-green));
+            background-size: 200% 200%;
+            animation: gradient-animation 4s ease infinite;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* NUEVA ANIMACIÓN DE BRILLO */
+        .delivery-info::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: shine 4s ease-in-out infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: scale(0) rotate(45deg); opacity: 0; }
+            50% { transform: scale(1) rotate(45deg); opacity: 1; }
+            100% { transform: scale(0) rotate(45deg); opacity: 0; }
+        }
+
+        /* ANIMACIÓN DE REBOTE SINCRONIZADA */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Estilos para cada palabra y el ícono */
+        .bouncing-word, .bouncing-icon {
+            display: inline-block;
+            animation: bounce 1s ease-in-out infinite;
+            /* Agregamos margen derecho a las palabras para separarlas */
+            margin-right: 8px; /* Espacio entre palabras */
+        }
+        
+        /* Espacio para el ícono y la primera palabra */
+        .bouncing-icon {
+          margin-right: 5px;
+        }
+        
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .trust-delivery-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .trust-delivery-item {
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark-green);
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+        }
+
+        .trust-delivery-item .icon {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-delivery-item p {
+            margin: 0;
+            font-size: 1rem;
         }
 
         /* Garantías y Confianza */
@@ -448,6 +568,117 @@
             transform: translateY(0);
         }
 
+        /* ESTILOS NUEVOS PARA EL FORMULARIO MODAL */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* Oculto por defecto */
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+            
+            /* NUEVO: Permite el desplazamiento vertical si el contenido es demasiado alto para la pantalla */
+            max-height: 90vh; 
+            overflow-y: auto;
+        }
+
+        .modal.is-visible .modal-content {
+            transform: scale(1);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-button:hover {
+            color: var(--dark-green);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select { /* Agregado el estilo para los selectores */
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box; /* Asegura que el padding no cambie el ancho */
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--dark-green);
+            box-shadow: 0 0 0 3px rgba(26, 79, 50, 0.2);
+        }
+
+        .modal h2 {
+            text-align: center;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
+        /* ESTILOS PARA EL MODAL DE ÉXITO */
+        .success-modal .modal-content {
+            text-align: center;
+            padding: 3rem;
+            background-color: #e0f2fe; /* Un color suave para destacar */
+        }
+        .success-modal h2 {
+            color: var(--dark-green);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .success-modal p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+        .success-modal .fa-check-circle {
+            font-size: 4rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
         /* Estilos de responsividad para que la página se adapte a cualquier tamaño de pantalla */
         /* Esta es la clave para que se vea bien en celulares y tabletas */
         @media (max-width: 768px) {
@@ -463,13 +694,15 @@
                 font-size: 1rem; /* Reduce el subtítulo para que no ocupe tanto espacio */
             }
 
-            .benefits, .product-section, .testimonials, .guarantees, .promo-section, .experience-section {
+            .benefits, .product-section, .testimonials, .guarantees, .promo-section, .experience-section, .trust-delivery-section {
                 padding: 2rem 1rem;
             }
 
             /* Los grids se convierten en una sola columna en pantallas pequeñas */
-            .benefits-grid, .testimonials-grid, .guarantees-grid {
+            .benefits-grid, .testimonials-grid, .guarantees-grid, .trust-delivery-grid {
                 grid-template-columns: 1fr;
+                flex-direction: column;
+                gap: 2rem;
             }
 
             /* Los contenedores flex se organizan verticalmente en pantallas pequeñas */
@@ -531,18 +764,6 @@
             </div>
         </section>
 
-        <!-- Sección de Producto -->
-        <section class="product-section fade-in-section">
-            <div class="container">
-                <h2>El Poder de la Naturaleza en un solo frasco</h2>
-                <div class="product-info">
-                    <img src="https://i.postimg.cc/SxzV64RL/5.jpg" alt="Frasco y cápsulas de Super Magnesio" class="product-image">
-                    <p>Nuestro suplemento combina la potencia del <strong>Magnesio</strong>, el adaptógeno premium <strong>Ashwagandha KSM-66</strong> y la <strong>Melatonina</strong> para ofrecerte una solución integral para el bienestar. Fabricado en EE. UU. con los más altos estándares de calidad.</p>
-                    <a href="https://wa.me/573203651692?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20suplemento%20de%20Super%20Magnesio%20&%20Ashwagandha." target="_blank" class="cta-button">Comprar Ahora por WhatsApp</a>
-                </div>
-            </div>
-        </section>
-
         <!-- Sección de Promoción -->
         <section class="promo-section fade-in-section">
             <div class="container">
@@ -560,7 +781,7 @@
                         <p><strong>2 frascos por</strong><br><span class="price">$135.000 COP</span></p>
                     </div>
                 </div>
-                <a href="https://wa.me/573203651692?text=Hola,%20me%20gustar%C3%ADa%20aprovechar%20la%20oferta%20de%20dos%20frascos." target="_blank" class="cta-button">¡Quiero la Oferta!</a>
+                <a href="#" class="cta-button" onclick="openFormModal()">¡Quiero la Oferta!</a>
             </div>
         </section>
 
@@ -571,7 +792,7 @@
                 <div class="content">
                     <div class="text-content">
                         <p>Imagina un día sin la carga del estrés, con la mente clara y el cuerpo en armonía. Nuestro suplemento no solo te ayuda a dormir, sino que te brinda la paz mental que necesitas para enfrentar tu día a día con energía y serenidad. Es el apoyo que tu sistema nervioso ha estado pidiendo.</p>
-                        <a href="https://wa.me/573203651692?text=Hola,%20estoy%20interesado%20en%20el%20suplemento%20para%20mejorar%20mi%20calidad%20de%20vida." target="_blank" class="cta-button">Descubre una Vida en Calma</a>
+                        <a href="#" class="cta-button" onclick="openFormModal()">Descubre una Vida en Calma</a>
                     </div>
                     <img src="https://i.postimg.cc/tCJBgWHM/4.jpg" alt="Persona relajada y durmiendo tranquilamente">
                 </div>
@@ -624,6 +845,37 @@
             </div>
         </section>
 
+        <!-- SECCIÓN DE CONFIANZA Y ENVÍO CON LA NUEVA ANIMACIÓN -->
+        <section class="trust-delivery-section fade-in-section">
+            <div class="container">
+                <h2>¡Compra con Confianza y Recibe en tu Casa!</h2>
+                <div class="delivery-info">
+                    <div id="bouncing-text-container" class="typing-text-container">
+                        <!-- El texto animado se generará aquí con JavaScript -->
+                    </div>
+                </div>
+                <div class="trust-delivery-grid">
+                    <div class="trust-delivery-item">
+                        <i class="fa-solid fa-hand-holding-dollar icon"></i>
+                        <p><strong>PAGO CONTRA ENTREGA</strong><br>Paga al recibir el producto en tu casa.</p>
+                    </div>
+                    <div class="trust-delivery-item">
+                        <i class="fa-solid fa-users icon"></i>
+                        <p><strong>+5.000 CLIENTES</strong><br>Satisfechos en todo el país.</p>
+                    </div>
+                    <div class="trust-delivery-item">
+                        <i class="fa-solid fa-star icon"></i>
+                        <p><strong>EXCELENTE ATENCIÓN</strong><br>Estamos listos para ayudarte en cualquier momento.</p>
+                    </div>
+                    <div class="trust-delivery-item">
+                        <i class="fa-solid fa-box-open icon"></i>
+                        <p><strong>ENVÍO SEGURO</strong><br>Tu pedido llegará en perfectas condiciones.</p>
+                    </div>
+                </div>
+                <a href="#" class="cta-button" onclick="openFormModal()">¡Haz tu Pedido Ahora!</a>
+            </div>
+        </section>
+
         <!-- Sección de Garantías y Confianza -->
         <section class="guarantees fade-in-section">
             <div class="container">
@@ -635,7 +887,7 @@
                     </div>
                     <div class="item">
                         <img src="https://i.postimg.cc/NfJprcqD/Made-in-usa.png" alt="Bandera de USA">
-                        <p>Made in USA</p>
+                        <p>Hecho en USA</p>
                     </div>
                     <div class="item">
                         <img src="https://i.postimg.cc/VkJ4qVz8/Aprovado-por-fda.png" alt="Sello Aprobado por FDA">
@@ -661,17 +913,170 @@
     </div>
 
     <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/573203651692?text=Hola,%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20producto." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/3224807578?text=Hola,%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20el%20producto." class="whatsapp-float" target="_blank">
         <span class="icon">💬</span>
     </a>
 
     <!-- Botón CTA "pegajoso" para móviles -->
-    <a href="https://wa.me/573203651692?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20suplemento%20de%20Super%20Magnesio%20&%20Ashwagandha." target="_blank" class="sticky-cta">
+    <a href="#" class="sticky-cta" onclick="openFormModal()">
         ¡Comprar Ahora!
     </a>
 
-    <!-- JavaScript para el temporizador y las animaciones -->
+    <!-- FORMULARIO MODAL -->
+    <div id="buyNowModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeFormModal()">&times;</span>
+            <h2>Información de Envío</h2>
+            <form id="purchaseForm">
+                <div class="form-group">
+                    <label for="nombres">Nombres</label>
+                    <input type="text" id="nombres" name="nombres" placeholder="Ingresa tus nombres" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Ingresa tus apellidos" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" id="telefono" name="telefono" placeholder="+57 320 1234567" required>
+                    <small>Formato: +57 1234567890</small>
+                </div>
+                
+                <!-- Campos de Departamento y Ciudad ahora son selectores -->
+                <div class="form-group">
+                    <label for="departamento">Departamento</label>
+                    <select id="departamento" name="departamento" required>
+                        <option value="" disabled selected>Selecciona un departamento</option>
+                        <option value="Amazonas">Amazonas</option>
+                        <option value="Antioquia">Antioquia</option>
+                        <option value="Arauca">Arauca</option>
+                        <option value="Atlántico">Atlántico</option>
+                        <option value="Bolívar">Bolívar</option>
+                        <option value="Boyacá">Boyacá</option>
+                        <option value="Caldas">Caldas</option>
+                        <option value="Caquetá">Caquetá</option>
+                        <option value="Casanare">Casanare</option>
+                        <option value="Cauca">Cauca</option>
+                        <option value="Cesar">Cesar</option>
+                        <option value="Chocó">Chocó</option>
+                        <option value="Córdoba">Córdoba</option>
+                        <option value="Cundinamarca">Cundinamarca</option>
+                        <option value="Guainía">Guainía</option>
+                        <option value="Guaviare">Guaviare</option>
+                        <option value="Huila">Huila</option>
+                        <option value="La Guajira">La Guajira</option>
+                        <option value="Magdalena">Magdalena</option>
+                        <option value="Meta">Meta</option>
+                        <option value="Nariño">Nariño</option>
+                        <option value="Norte de Santander">Norte de Santander</option>
+                        <option value="Putumayo">Putumayo</option>
+                        <option value="Quindío">Quindío</option>
+                        <option value="Risaralda">Risaralda</option>
+                        <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+                        <option value="Santander">Santander</option>
+                        <option value="Sucre">Sucre</option>
+                        <option value="Tolima">Tolima</option>
+                        <option value="Valle del Cauca">Valle del Cauca</option>
+                        <option value="Vaupés">Vaupés</option>
+                        <option value="Vichada">Vichada</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ciudad">Ciudad o Pueblo</label>
+                    <select id="ciudad" name="ciudad" required disabled>
+                        <option value="" disabled selected>Primero selecciona un departamento</option>
+                    </select>
+                </div>
+                <!-- Fin de los nuevos campos -->
+                
+                <div class="form-group">
+                    <label for="direccion">Dirección y Complementos</label>
+                    <textarea id="direccion" name="direccion" rows="3" placeholder="Ej: Calle 123 #45-67, Apto 809, Torre 2" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="tu.correo@ejemplo.com" required>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Enviar Pedido</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- MODAL DE CONFIRMACIÓN DE ÉXITO -->
+    <div id="successModal" class="modal success-modal">
+        <div class="modal-content">
+            <span class="fa-solid fa-circle-check"></span>
+            <h2>¡Tu pedido ha sido enviado!</h2>
+            <p>Serás redirigido a WhatsApp en un momento para finalizar tu compra. ¡Gracias por elegir Super Magnesio!</p>
+        </div>
+    </div>
+
+    <!-- JavaScript para el temporizador, animaciones y el formulario -->
     <script>
+        // Datos de departamentos y ciudades de Colombia (más detallados)
+        const ciudadesPorDepartamento = {
+            "Amazonas": ["Leticia","El Encanto","La Chorrera","La Pedrera","La Victoria","Miriti - Paraná","Puerto Alegría","Puerto Arica","Puerto Nariño","Puerto Santander","Tarapacá"],
+            "Antioquia": ["Medellín","Abejorral","Abriaquí","Alejandría","Amagá","Amalfi","Andes","Angelópolis","Angostura","Anorí","Santafé de Antioquia","Anzá","Apartadó","Arboletes","Argelia","Armenia","Barbosa","Belmira","Bello","Betania","Betulia","Ciudad Bolívar","Briceño","Buriticá","Cáceres","Caicedo","Caldas","Campamento","Cañasgordas","Caracolí","Caramanta","Carepa","Carolina","Caucasia","Chigorodó","Cisneros","Cocorná","Concepción","Concordia","Copacabana","Dabeiba","Donmatías","Eb-jé","El Bagre","Entrerríos","Envigado","Fredonia","Frontino","Giraldo","Girardota","Gómez Plata","Granada","Guadalupe","Guarne","Guatapé","Heliconia","Hispania","Itagüí","Ituango","Jardín","Jericó","La Ceja","La Estrella","La Pintada","La Unión","Liborina","Maceo","Marinilla","Montebello","Murindó","Mutatá","Nariño","Nechí","Necoclí","Olaya","Peñol","Peque","Pueblorrico","Puerto Berrío","Puerto Nare","Puerto Triunfo","Remedios","Retiro","Rionegro","Sabanalarga","Sabaneta","Salgar","San Andrés de Cuerquia","San Carlos","San Francisco","San Jerónimo","San José de la Montaña","San Juan de Urabá","San Luis","San Pedro de los Milagros","San Pedro de Urabá","San Rafael","San Roque","San Vicente Ferrer","Santa Bárbara","Santa Rosa de Osos","Santo Domingo","El Santuario","Segovia","Sonsón","Sopetrán","Tadó","Tarazá","Tarso","Titiribí","Toledo","Turbo","Uramita","Urrao","Valdivia","Valparaíso","Vegachí","Venecia","Vigía del Fuerte","Yalí","Yarumal","Yolombó","Yondó","Zaragoza"],
+            "Arauca": ["Arauca","Arauquita","Cravo Norte","Fortul","Puerto Rondón","Saravena","Tame"],
+            "Atlántico": ["Barranquilla","Baranoa","Campo de la Cruz","Candelaria","Galapa","Juan de Acosta","Luruaco","Malambo","Manatí","Palmar de Varela","Piojó","Polonuevo","Ponedera","Puerto Colombia","Repelón","Sabanagrande","Sabanalarga","Santa Lucía","Santo Tomás","Soledad","Suan","Tubará","Usiacurí"],
+            "Bolívar": ["Cartagena de Indias","Achí","Altos del Rosario","Arenal","Arjona","Arroyohondo","Barranco de Loba","Calamar","Cantagallo","Cicuco","Clemencia","Córdoba","El Carmen de Bolívar","El Guamo","El Peñón","Hatillo de Loba","Magangué","Mahates","Margarita","María La Baja","Mompós","Montecristo","Morales","Norosí","Pinillos","Regidor","Río Viejo","San Cristóbal","San Estanislao","San Fernando","San Jacinto","San Jacinto del Cauca","San Juan Nepomuceno","San Martín de Loba","San Pablo","Santa Catalina","Santa Rosa","Santa Rosa del Sur","Simití","Soplaviento","Talaigua Nuevo","Tiquisio","Turbaco","Turbaná","Zambrano"],
+            "Boyacá": ["Tunja","Almeida","Aquitania","Arcabuco","Belén","Berbeo","Betéitiva","Boavita","Boyacá","Briceño","Buenavista","Busbanzá","Caldas","Campohermoso","Cerinza","Chinavita","Chiquinquirá","Chiscas","Chita","Chitaraque","Chivatá","Chíquiza","Ciénega","Cómbita","Coper","Corrales","Cucaita","Cuítiva","Duitama","El Cocuy","El Espino","Firavitoba","Floresta","Gachantivá","Gámeza","Garagoa","Guacamayas","Guateque","Guayatá","Güicán de La Sierra","Iza","Jenesano","Jericó","La Capilla","La Uvita","La Victoria","Labranzagrande","Leiva","Macanal","Maripí","Miraflores","Mongua","Monguí","Moniquirá","Motavita","Muzo","Nobsa","Nuevo Colón","Oicatá","Otanche","Páez","Paipa","Pajarito","Panqueba","Pauna","Paya","Paz de Río","Pesca","Pisba","Puerto Boyacá","Quípama","Ramiriquí","Ráquira","Rondón","Saboyá","Sáchica","Samacá","San Eduardo","San Mateo","San Miguel de Sema","San Pablo de Borbur","Santa María","Santa Rosa de Viterbo","Santa Sofía","Santana","Sativanorte","Sativasur","Siachoque","Soatá","Socha","Sogamoso","Somondoco","Sora","Soracá","Sotaquirá","Susacón","Sutatenza","Tasco","Tenza","Tibaná","Tinjacá","Tipacoque","Toca","Toguí","Topaga","Tota","Turmequé","Tutazá","Umbita","Ventaquemada","Villa de Leyva","Viracachá","Zetaquira"],
+            "Caldas": ["Manizales","Aguadas","Anserma","Aranzazu","Belalcázar","Chinchiná","Filadelfia","La Dorada","La Merced","La Victoria","Manzanares","Marmato","Marquetalia","Marulanda","Neira","Norcasia","Pácora","Palestina","Pensilvania","Riosucio","Risaralda","Salamina","Samaná","Samaná","San José","Supía","Villamaría","Viterbo"],
+            "Caquetá": ["Florencia","Albania","Belén de los Andaquíes","Cartagena del Chairá","Curillo","El Doncello","El Paujil","La Montañita","Milán","Morelia","Puerto Rico","San José del Fragua","San Vicente del Caguán","Solano","Solita","Valparaíso"],
+            "Casanare": ["Yopal","Aguazul","Chámeza","Hato Corozal","La Salina","Maní","Monterrey","Nunchía","Orocué","Paz de Ariporo","Pore","Recetor","Sabanalarga","Sácama","San Luis de Palenque","Támara","Tauramena","Trinidad","Villanueva"],
+            "Cauca": ["Popayán","Almaguer","Argelia","Balboa","Bolívar","Buenos Aires","Cajibío","Caloto","Corinto","El Tambo","Florencia","Guachené","Guapi","Inzá","Jambaló","La Sierra","La Vega","López de Micay","Mercaderes","Miranda","Padilla","Páez","Patía","Piamonte","Piendamó","Puerto Tejada","Puracé","Rosas","San Sebastián","Santander de Quilichao","Silvia","Sotará","Suárez","Sucre","Timbío","Timbiquí","Toribío","Totoró","Villa Rica"],
+            "Cesar": ["Valledupar","Aguachica","Agustín Codazzi","Astrea","Becerril","Bosconia","Chimichagua","Chiriguaná","Curumaní","El Copey","El Paso","Gamarra","González","La Gloria","La Jagua de Ibirico","Manaure Balcón del Cesar","Pailitas","Pelaya","Pueblo Bello","Río de Oro","San Alberto","San Diego","San Martín","Tamalameque"],
+            "Chocó": ["Quibdó","Acandí","Alto Baudó","Atrato","Bagadó","Bahía Solano","Bajo Baudó","Bojayá","Carmen del Darién","Cértegui","Condoto","El Cantón del San Pablo","El Carmen de Atrato","El Litoral del San Juan","Istmina","Juradó","Lloró","Medio Atrato","Medio Baudó","Medio San Juan","Nóvita","Nuquí","Río Iró","Río Quito","Riosucio","San José del Palmar","Sipí","Tadó","Unión Panamericana","Unguía"],
+            "Córdoba": ["Montería","Ayapel","Buenavista","Canalete","Cereté","Chimá","Chinú","Cotorra","La Apartada","Lorica","Los Córdobas","Momil","Montelíbano","Moñitos","Planeta Rica","Pueblo Nuevo","Puerto Escondido","Puerto Libertador","Purísima de la Concepción","Sahagún","San Andrés de Sotavento","San Antero","San Bernardo del Viento","San Carlos","San Pelayo","Tierralta","Valencia"],
+            "Cundinamarca": ["Bogotá D.C.","Agua de Dios","Albán","Anapoima","Anolaima","Arbeláez","Beltrán","Bituima","Bojacá","Cabrera","Cachipay","Cajicá","Caparrapí","Cáqueza","Carmen de Carupa","Chaguaní","Chía","Chocontá","Cogua","Cota","Cucunubá","El Colegio","El Peñón","El Rosal","Facatativá","Fómeque","Fosca","Funza","Fúquene","Fusagasugá","Gachalá","Gachancipá","Gachetá","Gama","Girardot","Granada","Guachetá","Guaduas","Guasca","Guataquí","Guatavita","Guayabal de Síquima","Guayabetal","Gutiérrez","Junín","La Calera","La Mesa","La Palma","La Vega","Lenguazaque","Machetá","Madrid","Manta","Medina","Mosquera","Nariño","Nemocón","Nilo","Nimaima","Nocaima","Pacho","Paime","Pandi","Paratebueno","Pasca","Puerto Salgar","Pulí","Quebradanegra","Quetame","Quipile","Ricaurte","San Bernardo","San Cayetano","San Francisco de Sales","San Juan de Río Seco","Sasaima","Sesquilé","Sibaté","Silvania","Simijaca","Soacha","Subachoque","Suesca","Supatá","Susa","Sutatausa","Tabio","Tausa","Tena","Tenjo","Tibacuy","Tibirita","Tocaima","Tocancipá","Topaipí","Ubalá","Ubaté","Une","Útica","Venecia","Vergara","Vianí","Villagómez","Villapinzón","Villeta","Viotá","Yacopí","Zipacón","Zipaquirá"],
+            "Guainía": ["Inírida","Barranco Minas","Mapiripana","San Felipe","Puerto Colombia","La Guadalupe","Cacahual"],
+            "Guaviare": ["San José del Guaviare","Calamar","El Retorno","Miraflores"],
+            "Huila": ["Neiva","Acevedo","Agrado","Aipe","Algeciras","Altamira","Baraya","Campoalegre","Colombia","Elías","Garzón","Gigante","Guadalupe","Hobo","Iquira","Isnos","La Argentina","La Plata","Nátaga","Oporapa","Paicol","Palermo","Palestina","Pitalito","Rivera","Saladoblanco","San Agustín","Santa María","Suaza","Tarqui","Tesalia","Timaná","Villavieja","Yaguará"],
+            "La Guajira": ["Riohacha","Albania","Barrancas","Dibulla","El Molino","Fonseca","Hatonuevo","Maicao","Manaure","San Juan del Cesar","Uribia","Urumita","Villanueva"],
+            "Magdalena": ["Santa Marta","Algarrobo","Aracataca","Ariguaní","Cerro de San Antonio","Chibolo","Ciénaga","Concordia","El Banco","El Piñón","El Retén","Fundación","Guamal","Nueva Granada","Pedraza","Pivijay","Plato","Puebloviejo","Remolino","Sabanas de San Ángel","Salamina","San Sebastián de Buenavista","San Zenón","Santa Bárbara de Pinto","Sitionuevo","Tenerife"],
+            "Meta": ["Villavicencio","Acacías","Barranca de Upía","Cabuyaro","Castilla la Nueva","Cubarral","Cumaral","El Calvario","El Castillo","El Dorado","Fuente de Oro","Granada","Guamal","Lejanías","Mapiripán","Mesetas","La Macarena","La Uribe","Puerto Concordia","Puerto Gaitán","Puerto Lleras","Puerto Rico","Restrepo","San Carlos de Guaroa","San Juan de Arama","San Juanito","San Martín","Vista Hermosa"],
+            "Nariño": ["Pasto","Albán","Aldana","Ancuyá","Arboleda","Barbacoas","Belén","Buesaco","Chachagüí","Colón","Consacá","Contadero","Córdoba","Cuaspud","Cumbal","Cumbitara","El Charco","El Peñol","El Rosario","El Tablón","El Tambo","Francisco Pizarro","Funes","Guachucal","Guaitarilla","Gualmatán","Iles","Imués","Ipiales","La Cruz","La Florida","La Llanada","La Tola","La Unión","Leiva","Linares","Los Andes","Magüí Payán","Mallama","Nariño","Olaya Herrera","Ospina","Policarpa","Potosí","Providencia","Puerres","Pupiales","Ricaurte","Roberto Payán","Samaniego","Sandoná","San Bernardo","San Lorenzo","San Pablo","San Pedro de Cartago","Santa Bárbara","Sapuyes","Taminango","Tangua","Tumaco","Túquerres","Yacuanquer"],
+            "Norte de Santander": ["Cúcuta","Abrego","Arboledas","Bochalema","Bucarasica","Cáchira","Cacota","Chinácota","Chitagá","Convención","Cucutilla","Durania","El Carmen","El Zulia","Gramalote","Hacarí","Herrán","La Esperanza","La Playa de Belén","Labateca","Los Patios","Lourdes","Mutiscua","Ocaña","Pamplona","Pamplonita","Puerto Santander","Ragonvalia","Salazar","San Cayetano","Santiago","Sardinata","Silos","Teorama","Tibú","Toledo","Villa Caro","Villa del Rosario"],
+            "Putumayo": ["Mocoa","Colón","Orito","Puerto Asís","Puerto Caicedo","Puerto Guzmán","Puerto Leguízamo","San Francisco","San Miguel","Santiago","Sibundoy","Valle del Guamuez","Villagarzón"],
+            "Quindío": ["Armenia","Buenavista","Calarcá","Circasia","Córdoba","Filandia","Génova","La Tebaida","Montenegro","Pijao","Quimbaya","Salento"],
+            "Risaralda": ["Pereira","Apía","Balboa","Belén de Umbría","Dosquebradas","Guática","La Celia","La Virginia","Marsella","Mistrató","Pueblo Rico","Quinchía","Santa Rosa de Cabal","Santuario"],
+            "San Andrés y Providencia": ["San Andrés","Providencia y Santa Catalina"],
+            "Santander": ["Bucaramanga","Aguada","Albania","Aratoca","Barbosa","Barichara","Barrancabermeja","Betulia","Bolívar","Cabrera","California","Capitanejo","Carcasí","Cepitá","Cerrito","Charalá","Chima","Chipatá","Cimitarra","Concepción","Confines","Contratación","Coromoro","Curití","El Guacamayo","El Playón","El Socorro","Encino","Enciso","Floridablanca","Galán","Gámbita","Girón","Guaca","Guadalupe","Guapotá","Guavatá","Güepsa","Jesús María","Jordán","La Belleza","La Paz","Landázuri","Lebrija","Los Santos","Macaravita","Málaga","Matanza","Mogotes","Molagavita","Oiba","Onzaga","Palmar","Páramo","Piedecuesta","Pinchote","Puente Nacional","Puerto Parra","Puerto Wilches","Rionegro","Sabana de Torres","San Andrés","San Benito","San Gil","San Joaquín","San José de Miranda","San Miguel","San Vicente de Chucurí","Santa Bárbara","Santa Helena del Opón","Simacota","Suaita","Sucre","Suratá","Tona","Valle de San José","Vélez","Vetas","Villanueva","Zapatoca"],
+            "Sucre": ["Sincelejo","Buenavista","Caimito","Colosó","Coveñas","El Roble","Galeras","Guaranda","La Unión","Los Palmitos","Majagual","Morroa","Ovejas","Palmito","San Benito Abad","San Marcos","San Onofre","San Pedro","Sincé","Sucre","Tolú","Tolúviejo"],
+            "Tolima": ["Ibagué","Alpujarra","Alvarado","Ambalema","Anzoátegui","Armero","Ataco","Cajamarca","Carmen de Apicalá","Casabianca","Chaparral","Coello","Coyaima","Cunday","Dolores","Espinal","Falan","Flandes","Fresno","Guamo","Herveo","Honda","Icononzo","Líbano","Mariquita","Melgar","Murillo","Natagaima","Ortega","Palocabildo","Piedras","Planadas","Prado","Purificación","Rioblanco","Roncesvalles","Rovira","Saldaña","San Antonio","San Luis","Santa Isabel","Suárez","Valle de San Juan","Venadillo","Villahermosa","Villarrica"],
+            "Valle del Cauca": ["Cali","Alcalá","Andalucía","Ansermanuevo","Argelia","Bolívar","Buenaventura","Buga","Bugalagrande","Caicedonia","Cartago","Dagua","El Águila","El Cairo","El Cerrito","El Dovio","Florida","Ginebra","Guacarí","Jamundí","La Cumbre","La Unión","La Victoria","Obando","Palmira","Pradera","Restrepo","Riofrío","Roldanillo","San Pedro","Sevilla","Toro","Trujillo","Tuluá","Ulloa","Versalles","Vijes","Yotoco","Yumbo","Zarzal"],
+            "Vaupés": ["Mitú","Carurú","Papunaua","Taraira","Yavaraté","Pacóa"],
+            "Vichada": ["Puerto Carreño","La Primavera","Santa Rosalía","Cumaribo"]
+        };
+        
+        const departamentoSelect = document.getElementById('departamento');
+        const ciudadSelect = document.getElementById('ciudad');
+        
+        /**
+         * Maneja el cambio en el select de departamentos para actualizar el de ciudades.
+         */
+        departamentoSelect.addEventListener('change', (event) => {
+            const selectedDepartamento = event.target.value;
+            
+            // Limpia las opciones anteriores del select de ciudades
+            ciudadSelect.innerHTML = '<option value="" disabled selected>Selecciona una ciudad</option>';
+            ciudadSelect.disabled = true; // Deshabilita el select mientras se actualiza
+
+            if (selectedDepartamento in ciudadesPorDepartamento) {
+                const ciudades = ciudadesPorDepartamento[selectedDepartamento];
+                ciudades.forEach(ciudad => {
+                    const option = document.createElement('option');
+                    option.value = ciudad;
+                    option.textContent = ciudad;
+                    ciudadSelect.appendChild(option);
+                });
+                ciudadSelect.disabled = false; // Habilita el select de ciudades
+            } else {
+                ciudadSelect.innerHTML = '<option value="" disabled selected>No se encontraron ciudades</option>';
+            }
+        });
+
         // Función para actualizar el temporizador cada segundo
         function updateCountdown() {
             // Establecer la fecha final de la cuenta regresiva (1 hora desde ahora)
@@ -717,6 +1122,28 @@
         // Script para las animaciones de aparición
         const fadeInSections = document.querySelectorAll('.fade-in-section');
         const stickyCta = document.querySelector('.sticky-cta');
+        const bouncingTextContainer = document.getElementById('bouncing-text-container');
+        const textToAnimate = "ENVÍO GRATIS A TODO EL PAÍS Y PAGA AL RECIBIR";
+        
+        // Función para crear el texto animado
+        function createBouncingText() {
+            // Limpiamos el contenedor
+            bouncingTextContainer.innerHTML = '';
+            
+            // Creamos el ícono del carro
+            const icon = document.createElement('i');
+            icon.classList.add('fa-solid', 'fa-truck-fast', 'bouncing-icon');
+            bouncingTextContainer.appendChild(icon);
+            
+            // Dividimos la frase en palabras y creamos un elemento <span> para cada una.
+            textToAnimate.split(" ").forEach((word) => {
+                const span = document.createElement('span');
+                span.textContent = word;
+                span.classList.add('bouncing-word');
+                bouncingTextContainer.appendChild(span);
+            });
+        }
+
 
         const observerOptions = {
             root: null,
@@ -726,8 +1153,10 @@
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
+                // Se corrigió el error: entry.is-visible -> entry.isIntersecting
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
+                    
                     observer.unobserve(entry.target);
                 }
             });
@@ -736,7 +1165,7 @@
         fadeInSections.forEach(section => {
             observer.observe(section);
         });
-
+        
         // Mostrar el botón "pegajoso" al desplazar hacia abajo
         window.addEventListener('scroll', () => {
             if (window.scrollY > window.innerHeight / 2) {
@@ -746,8 +1175,100 @@
             }
         });
 
+        // Funciones para el modal de formulario y el modal de éxito
+        const buyNowModal = document.getElementById('buyNowModal');
+        const successModal = document.getElementById('successModal');
+        const purchaseForm = document.getElementById('purchaseForm');
+
+        function openFormModal() {
+            buyNowModal.style.display = 'flex';
+            setTimeout(() => {
+                buyNowModal.classList.add('is-visible');
+            }, 10);
+        }
+
+        function closeFormModal() {
+            buyNowModal.classList.remove('is-visible');
+            setTimeout(() => {
+                buyNowModal.style.display = 'none';
+            }, 300);
+        }
+
+        function openSuccessModal() {
+            successModal.style.display = 'flex';
+            setTimeout(() => {
+                successModal.classList.add('is-visible');
+            }, 10);
+        }
+
+        function closeSuccessModal() {
+            successModal.classList.remove('is-visible');
+            setTimeout(() => {
+                successModal.style.display = 'none';
+            }, 300);
+        }
+
+        // Manejar el envío del formulario
+        purchaseForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que la página se recargue
+
+            // Recopilar los datos del formulario
+            const nombres = document.getElementById('nombres').value;
+            const apellidos = document.getElementById('apellidos').value;
+            const telefono = document.getElementById('telefono').value;
+            const departamento = document.getElementById('departamento').value;
+            const ciudad = document.getElementById('ciudad').value;
+            const direccion = document.getElementById('direccion').value;
+            const email = document.getElementById('email').value;
+
+            // Construir el mensaje para WhatsApp
+            const mensaje = `¡Hola! Me gustaría hacer un pedido del Super Magnesio. Aquí están mis datos:\n\n`
+                            + `*Nombres:* ${nombres}\n`
+                            + `*Apellidos:* ${apellidos}\n`
+                            + `*Teléfono:* ${telefono}\n`
+                            + `*Departamento:* ${departamento}\n`
+                            + `*Ciudad:* ${ciudad}\n`
+                            + `*Dirección:* ${direccion}\n`
+                            + `*Correo:* ${email}\n\n`
+                            + `Por favor, ayúdame a completar mi compra.`;
+
+            // Codificar el mensaje para la URL
+            const mensajeCodificado = encodeURIComponent(mensaje);
+
+            // Cerrar el modal del formulario
+            closeFormModal();
+
+            // Mostrar el modal de éxito
+            openSuccessModal();
+            
+            // Reemplaza '573203651692' con el número de teléfono al que quieres enviar el mensaje.
+            // Asegúrate de que no tenga guiones ni paréntesis, solo los números.
+            const whatsappNumber = '3224807578';
+
+            // Después de 3 segundos, redirigir a WhatsApp
+            setTimeout(() => {
+                window.location.href = `https://wa.me/${whatsappNumber}?text=${mensajeCodificado}`;
+            }, 3000); // 3000 milisegundos = 3 segundos
+        });
+
+        // Cierra los modales si se hace clic fuera del contenido
+        window.addEventListener('click', (event) => {
+            if (event.target === buyNowModal) {
+                closeFormModal();
+            }
+            if (event.target === successModal) {
+                closeSuccessModal();
+            }
+        });
+        
         // Llamar a la función al cargar la página
-        window.onload = updateCountdown;
+        window.onload = () => {
+            updateCountdown();
+            createBouncingText();
+            
+            // Deshabilitar el campo de ciudad al inicio
+            ciudadSelect.disabled = true;
+        };
     </script>
 
 </body>

@@ -927,25 +927,38 @@
         <div class="modal-content">
             <span class="close-button" onclick="closeFormModal()">&times;</span>
             <h2>Información de Envío</h2>
-            <form id="purchaseForm">
+            <!--
+            ************************************************
+            * AQUÍ DEBES PEGAR TU CORREO         *
+            ************************************************
+            * Reemplaza "your@email.com" por tu dirección real.
+            * Este es el atributo 'action' que envía el formulario.
+            -->
+            <form action="https://formsubmit.co/jsrodriguezp14@gmail.com" method="POST">
+                
+                <!-- Este campo oculto desactiva el reCAPTCHA de FormSubmit -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Este campo redirige al usuario a una página de éxito después de enviar el formulario -->
+                <input type="hidden" name="_next" value="https://formsubmit.co/your@email.com/thanks">
+
                 <div class="form-group">
                     <label for="nombres">Nombres</label>
-                    <input type="text" id="nombres" name="nombres" placeholder="Ingresa tus nombres" required>
+                    <input type="text" id="nombres" name="Nombres" placeholder="Ingresa tus nombres" required>
                 </div>
                 <div class="form-group">
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" id="apellidos" name="apellidos" placeholder="Ingresa tus apellidos" required>
+                    <input type="text" id="apellidos" name="Apellidos" placeholder="Ingresa tus apellidos" required>
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono</label>
-                    <input type="text" id="telefono" name="telefono" placeholder="+57 320 1234567" required>
+                    <input type="text" id="telefono" name="Teléfono" placeholder="+57 320 1234567" required>
                     <small>Formato: +57 1234567890</small>
                 </div>
                 
                 <!-- Campos de Departamento y Ciudad ahora son selectores -->
                 <div class="form-group">
                     <label for="departamento">Departamento</label>
-                    <select id="departamento" name="departamento" required>
+                    <select id="departamento" name="Departamento" required>
                         <option value="" disabled selected>Selecciona un departamento</option>
                         <option value="Amazonas">Amazonas</option>
                         <option value="Antioquia">Antioquia</option>
@@ -984,7 +997,7 @@
                 
                 <div class="form-group">
                     <label for="ciudad">Ciudad o Pueblo</label>
-                    <select id="ciudad" name="ciudad" required disabled>
+                    <select id="ciudad" name="Ciudad" required disabled>
                         <option value="" disabled selected>Primero selecciona un departamento</option>
                     </select>
                 </div>
@@ -992,26 +1005,18 @@
                 
                 <div class="form-group">
                     <label for="direccion">Dirección y Complementos</label>
-                    <textarea id="direccion" name="direccion" rows="3" placeholder="Ej: Calle 123 #45-67, Apto 809, Torre 2" required></textarea>
+                    <textarea id="direccion" name="Dirección" rows="3" placeholder="Ej: Calle 123 #45-67, Apto 809, Torre 2" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="tu.correo@ejemplo.com" required>
+                    <input type="email" id="email" name="Correo Electrónico" placeholder="tu.correo@ejemplo.com" required>
                 </div>
                 <button type="submit" class="cta-button" style="width: 100%;">Enviar Pedido</button>
             </form>
+            <!-- ¡FIN DE LA INTEGRACIÓN DE FORMSUBMIT! -->
         </div>
     </div>
     
-    <!-- MODAL DE CONFIRMACIÓN DE ÉXITO -->
-    <div id="successModal" class="modal success-modal">
-        <div class="modal-content">
-            <span class="fa-solid fa-circle-check"></span>
-            <h2>¡Tu pedido ha sido enviado!</h2>
-            <p>Se abrirá tu cliente de correo electrónico para que finalices el envío. ¡Gracias por elegir Super Magnesio!</p>
-        </div>
-    </div>
-
     <!-- JavaScript para el temporizador, animaciones y el formulario -->
     <script>
         // Datos de departamentos y ciudades de Colombia (más detallados)
@@ -1038,7 +1043,7 @@
             "Meta": ["Villavicencio","Acacías","Barranca de Upía","Cabuyaro","Castilla la Nueva","Cubarral","Cumaral","El Calvario","El Castillo","El Dorado","Fuente de Oro","Granada","Guamal","Lejanías","Mapiripán","Mesetas","La Macarena","La Uribe","Puerto Concordia","Puerto Gaitán","Puerto Lleras","Puerto Rico","Restrepo","San Carlos de Guaroa","San Juan de Arama","San Juanito","San Martín","Vista Hermosa"],
             "Nariño": ["Pasto","Albán","Aldana","Ancuyá","Arboleda","Barbacoas","Belén","Buesaco","Chachagüí","Colón","Consacá","Contadero","Córdoba","Cuaspud","Cumbal","Cumbitara","El Charco","El Peñol","El Rosario","El Tablón","El Tambo","Francisco Pizarro","Funes","Guachucal","Guaitarilla","Gualmatán","Iles","Imués","Ipiales","La Cruz","La Florida","La Llanada","La Tola","La Unión","Leiva","Linares","Los Andes","Magüí Payán","Mallama","Nariño","Olaya Herrera","Ospina","Policarpa","Potosí","Providencia","Puerres","Pupiales","Ricaurte","Roberto Payán","Samaniego","Sandoná","San Bernardo","San Lorenzo","San Pablo","San Pedro de Cartago","Santa Bárbara","Sapuyes","Taminango","Tangua","Tumaco","Túquerres","Yacuanquer"],
             "Norte de Santander": ["Cúcuta","Abrego","Arboledas","Bochalema","Bucarasica","Cáchira","Cacota","Chinácota","Chitagá","Convención","Cucutilla","Durania","El Carmen","El Zulia","Gramalote","Hacarí","Herrán","La Esperanza","La Playa de Belén","Labateca","Los Patios","Lourdes","Mutiscua","Ocaña","Pamplona","Pamplonita","Puerto Santander","Ragonvalia","Salazar","San Cayetano","Santiago","Sardinata","Silos","Teorama","Tibú","Toledo","Villa Caro","Villa del Rosario"],
-            "Putumayo": ["Mocoa","Colón","Orito","Puerto Asís","Puerto Caicedo","Puerto Guzmán","Puerto Leguízamo","San Francisco","San Miguel","Santiago","Sibundoy","Valle del Guamuez","Villagarzón"],
+            "Putumayo": ["Mocoa","Colón","Orito","Puerto Asís","Puerto Caicedo","Puerto Guzmán","San Francisco","San Miguel","Santiago","Sibundoy","Valle del Guamuez","Villagarzón"],
             "Quindío": ["Armenia","Buenavista","Calarcá","Circasia","Córdoba","Filandia","Génova","La Tebaida","Montenegro","Pijao","Quimbaya","Salento"],
             "Risaralda": ["Pereira","Apía","Balboa","Belén de Umbría","Dosquebradas","Guática","La Celia","La Virginia","Marsella","Mistrató","Pueblo Rico","Quinchía","Santa Rosa de Cabal","Santuario"],
             "San Andrés y Providencia": ["San Andrés","Providencia y Santa Catalina"],
@@ -1177,8 +1182,7 @@
 
         // Funciones para el modal de formulario
         const buyNowModal = document.getElementById('buyNowModal');
-        const purchaseForm = document.getElementById('purchaseForm');
-
+        
         function openFormModal() {
             buyNowModal.style.display = 'flex';
             setTimeout(() => {
@@ -1192,41 +1196,6 @@
                 buyNowModal.style.display = 'none';
             }, 300);
         }
-
-        // Manejar el envío del formulario
-        purchaseForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Evita que la página se recargue
-
-            // Recopilar los datos del formulario
-            const nombres = document.getElementById('nombres').value;
-            const apellidos = document.getElementById('apellidos').value;
-            const telefono = document.getElementById('telefono').value;
-            const departamento = document.getElementById('departamento').value;
-            const ciudad = document.getElementById('ciudad').value;
-            const direccion = document.getElementById('direccion').value;
-            const email = document.getElementById('email').value;
-
-            // Construir el cuerpo del correo
-            const subject = "Nuevo Pedido de Super Magnesio";
-            const body = `¡Hola! Acabo de enviar un pedido del Super Magnesio. Aquí están mis datos:\n\n`
-                            + `*Nombres:* ${nombres}\n`
-                            + `*Apellidos:* ${apellidos}\n`
-                            + `*Teléfono:* ${telefono}\n`
-                            + `*Departamento:* ${departamento}\n`
-                            + `*Ciudad:* ${ciudad}\n`
-                            + `*Dirección:* ${direccion}\n`
-                            + `*Correo:* ${email}\n\n`
-                            + `Espero su confirmación. ¡Gracias!`;
-
-            // Codificar el asunto y el cuerpo del correo para la URL
-            const subjectCodificado = encodeURIComponent(subject);
-            const bodyCodificado = encodeURIComponent(body);
-
-            const recipientEmail = "jsrodriguezp14@gmail.com";
-            
-            // Abrir el cliente de correo electrónico
-            window.location.href = `mailto:${recipientEmail}?subject=${subjectCodificado}&body=${bodyCodificado}`;
-        });
 
         // Cierra el modal si se hace clic fuera del contenido
         window.addEventListener('click', (event) => {

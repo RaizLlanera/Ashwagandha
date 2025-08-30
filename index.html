@@ -1008,7 +1008,7 @@
         <div class="modal-content">
             <span class="fa-solid fa-circle-check"></span>
             <h2>¡Tu pedido ha sido enviado!</h2>
-            <p>Serás redirigido a WhatsApp en un momento para finalizar tu compra. ¡Gracias por elegir Super Magnesio!</p>
+            <p>Se abrirá tu cliente de correo electrónico para que finalices el envío. ¡Gracias por elegir Super Magnesio!</p>
         </div>
     </div>
 
@@ -1175,9 +1175,8 @@
             }
         });
 
-        // Funciones para el modal de formulario y el modal de éxito
+        // Funciones para el modal de formulario
         const buyNowModal = document.getElementById('buyNowModal');
-        const successModal = document.getElementById('successModal');
         const purchaseForm = document.getElementById('purchaseForm');
 
         function openFormModal() {
@@ -1194,20 +1193,6 @@
             }, 300);
         }
 
-        function openSuccessModal() {
-            successModal.style.display = 'flex';
-            setTimeout(() => {
-                successModal.classList.add('is-visible');
-            }, 10);
-        }
-
-        function closeSuccessModal() {
-            successModal.classList.remove('is-visible');
-            setTimeout(() => {
-                successModal.style.display = 'none';
-            }, 300);
-        }
-
         // Manejar el envío del formulario
         purchaseForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Evita que la página se recargue
@@ -1221,8 +1206,9 @@
             const direccion = document.getElementById('direccion').value;
             const email = document.getElementById('email').value;
 
-            // Construir el mensaje para WhatsApp
-            const mensaje = `¡Hola! Me gustaría hacer un pedido del Super Magnesio. Aquí están mis datos:\n\n`
+            // Construir el cuerpo del correo
+            const subject = "Nuevo Pedido de Super Magnesio";
+            const body = `¡Hola! Acabo de enviar un pedido del Super Magnesio. Aquí están mis datos:\n\n`
                             + `*Nombres:* ${nombres}\n`
                             + `*Apellidos:* ${apellidos}\n`
                             + `*Teléfono:* ${telefono}\n`
@@ -1230,34 +1216,22 @@
                             + `*Ciudad:* ${ciudad}\n`
                             + `*Dirección:* ${direccion}\n`
                             + `*Correo:* ${email}\n\n`
-                            + `Por favor, ayúdame a completar mi compra.`;
+                            + `Espero su confirmación. ¡Gracias!`;
 
-            // Codificar el mensaje para la URL
-            const mensajeCodificado = encodeURIComponent(mensaje);
+            // Codificar el asunto y el cuerpo del correo para la URL
+            const subjectCodificado = encodeURIComponent(subject);
+            const bodyCodificado = encodeURIComponent(body);
 
-            // Cerrar el modal del formulario
-            closeFormModal();
-
-            // Mostrar el modal de éxito
-            openSuccessModal();
+            const recipientEmail = "jsrodriguezp14@gmail.com";
             
-            // Reemplaza '573203651692' con el número de teléfono al que quieres enviar el mensaje.
-            // Asegúrate de que no tenga guiones ni paréntesis, solo los números.
-            const whatsappNumber = '3224807578';
-
-            // Después de 3 segundos, redirigir a WhatsApp
-            setTimeout(() => {
-                window.location.href = `https://wa.me/${whatsappNumber}?text=${mensajeCodificado}`;
-            }, 3000); // 3000 milisegundos = 3 segundos
+            // Abrir el cliente de correo electrónico
+            window.location.href = `mailto:${recipientEmail}?subject=${subjectCodificado}&body=${bodyCodificado}`;
         });
 
-        // Cierra los modales si se hace clic fuera del contenido
+        // Cierra el modal si se hace clic fuera del contenido
         window.addEventListener('click', (event) => {
             if (event.target === buyNowModal) {
                 closeFormModal();
-            }
-            if (event.target === successModal) {
-                closeSuccessModal();
             }
         });
         

@@ -201,6 +201,87 @@
         .promo-section .cta-button {
             margin-top: 2rem;
         }
+        
+        /* Nuevo estilo para la sección de productos */
+        .products-gallery {
+            background-color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .products-gallery h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--dark-green);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+            align-items: stretch;
+        }
+        
+        .product-card {
+            background-color: var(--light-gray);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .product-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+        
+        .product-card p {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            color: #666;
+            flex-grow: 1; /* Permite que la descripción ocupe el espacio restante */
+        }
+        
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            gap: 0.5rem;
+        }
+        
+        .price-container .original-price {
+            font-size: 1.1rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .price-container .discounted-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
 
         /* Estilos del Temporizador */
         .countdown {
@@ -708,12 +789,12 @@
                 font-size: 1rem; /* Reduce el subtítulo para que no ocupe tanto espacio */
             }
 
-            .benefits, .product-section, .testimonials, .guarantees, .promo-section, .experience-section, .trust-delivery-section {
+            .benefits, .product-section, .testimonials, .guarantees, .promo-section, .experience-section, .trust-delivery-section, .products-gallery {
                 padding: 2rem 1rem;
             }
 
             /* Los grids se convierten en una sola columna en pantallas pequeñas */
-            .benefits-grid, .testimonials-grid, .guarantees-grid, .trust-delivery-grid {
+            .benefits-grid, .testimonials-grid, .guarantees-grid, .trust-delivery-grid, .product-grid {
                 grid-template-columns: 1fr;
                 flex-direction: column;
                 gap: 2rem;
@@ -856,6 +937,60 @@
                         <h4>- Mario L.</h4>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PRODUCTOS ADICIONALES -->
+        <section class="products-gallery fade-in-section">
+            <div class="container">
+                <h2>¡Potencia tu Bienestar con Nuestra Línea de Productos!</h2>
+                <p>Descubre nuestros suplementos de alta calidad, diseñados para complementar tu salud y bienestar en todos los aspectos.</p>
+                <div class="product-grid">
+                    <!-- Producto: Colágeno con Citrato de Magnesio -->
+                    <div class="product-card">
+                        <img src="https://i.postimg.cc/XqHF6tTy/Colageno-Hidrolizado-Con-Citrato-De-Magnesio.jpg" alt="Colágeno con Citrato de Magnesio">
+                        <h3>Colágeno con Citrato de Magnesio</h3>
+                        <p>Apoya la salud de tus huesos, articulaciones y la elasticidad de tu piel. Una combinación esencial para la belleza y el bienestar.</p>
+                        <div class="price-container">
+                            <span class="original-price" data-price="106250"></span>
+                            <span class="discounted-price"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto: Resveratrol -->
+                    <div class="product-card">
+                        <img src="https://i.postimg.cc/QtDcQQQV/Resveratrol.jpg" alt="Resveratrol">
+                        <h3>Resveratrol</h3>
+                        <p>Antioxidante potente para la salud cardiovascular y antienvejecimiento. Promueve la longevidad celular y protege tu corazón.</p>
+                        <div class="price-container">
+                            <span class="original-price" data-price="123750"></span>
+                            <span class="discounted-price"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto: Colágeno Puro -->
+                    <div class="product-card">
+                        <img src="https://i.postimg.cc/Y0qgVtyH/Colageno-Puro.jpg" alt="Colágeno Puro">
+                        <h3>Colágeno Puro</h3>
+                        <p>Mantiene la firmeza y regeneración de la piel, y fortalece el cabello y las uñas. Tu aliado para una apariencia joven y radiante.</p>
+                        <div class="price-container">
+                            <span class="original-price" data-price="137500"></span>
+                            <span class="discounted-price"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto: Omega 3, 6, 9 -->
+                    <div class="product-card">
+                        <img src="https://i.postimg.cc/fLvmBVCC/Omega-3-6-9.png" alt="Omega 3, 6, 9">
+                        <h3>Omega 3, 6, 9</h3>
+                        <p>Ácidos grasos esenciales que apoyan la función cerebral y la salud cardiovascular. Un impulso vital para tu cuerpo.</p>
+                        <div class="price-container">
+                            <span class="original-price" data-price="106250"></span>
+                            <span class="discounted-price"></span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="cta-button" onclick="openFormModal()" style="margin-top: 2rem;">¡Preguntar por los Productos!</a>
             </div>
         </section>
 
@@ -1044,7 +1179,7 @@
         // Datos de departamentos y ciudades de Colombia (más detallados)
         const ciudadesPorDepartamento = {
             "Amazonas": ["Leticia","El Encanto","La Chorrera","La Pedrera","La Victoria","Miriti - Paraná","Puerto Alegría","Puerto Arica","Puerto Nariño","Puerto Santander","Tarapacá"],
-            "Antioquia": ["Medellín","Abejorral","Abriaquí","Alejandría","Amagá","Amalfi","Andes","Angelópolis","Angostura","Anorí","Santafé de Antioquia","Anzá","Apartadó","Arboletes","Argelia","Armenia","Barbosa","Belmira","Bello","Betania","Betulia","Ciudad Bolívar","Briceño","Buriticá","Cáceres","Caicedo","Caldas","Campamento","Cañasgordas","Caracolí","Caramanta","Carepa","Carolina","Caucasia","Chigorodó","Cisneros","Cocorná","Concepción","Concordia","Copacabana","Dabeiba","Donmatías","Eb-jé","El Bagre","Entrerríos","Envigado","Fredonia","Frontino","Giraldo","Girardota","Gómez Plata","Granada","Guadalupe","Guarne","Guatapé","Heliconia","Hispania","Itagüí","Ituango","Jardín","Jericó","La Ceja","La Estrella","La Pintada","La Unión","Liborina","Maceo","Marinilla","Montebello","Murindó","Mutatá","Nariño","Nechí","Necoclí","Olaya","Peñol","Peque","Pueblorrico","Puerto Berrío","Puerto Nare","Puerto Triunfo","Remedios","Retiro","Rionegro","Sabanalarga","Sabaneta","Salgar","San Andrés de Cuerquia","San Carlos","San Francisco","San Jerónimo","San José de la Montaña","San Juan de Urabá","San Luis","San Pedro de los Milagros","San Pedro de Urabá","San Rafael","San Roque","San Vicente Ferrer","Santa Bárbara","Santa Rosa de Osos","Santo Domingo","El Santuario","Segovia","Sonsón","Sopetrán","Tadó","Tarazá","Tarso","Titiribí","Toledo","Turbo","Uramita","Urrao","Valdivia","Valparaíso","Vegachí","Venecia","Vigía del Fuerte","Yalí","Yarumal","Yolombó","Yondó","Zaragoza"],
+            "Antioquia": ["Medellín","Abejorral","Abriaquí","Alejandría","Amagá","Amalfi","Andes","Angelópolis","Angostura","Anorí","Santafé de Antioquia","Anzá","Apartadó","Arboletes","Argelia","Armenia","Barbosa","Belmira","Bello","Betania","Betulia","Ciudad Bolívar","Briceño","Buriticá","Cáceres","Caicedo","Caldas","Campamento","Cañasgordas","Caracolí","Caramanta","Carepa","Carolina","Caucasia","Chigorodó","Cisneros","Cocorná","Concordia","Copacabana","Dabeiba","Donmatías","Eb-jé","El Bagre","Entrerríos","Envigado","Fredonia","Frontino","Giraldo","Girardota","Gómez Plata","Granada","Guadalupe","Guarne","Guatapé","Heliconia","Hispania","Itagüí","Ituango","Jardín","Jericó","La Ceja","La Estrella","La Pintada","La Unión","Liborina","Maceo","Marinilla","Montebello","Murindó","Mutatá","Nariño","Nechí","Necoclí","Olaya","Peñol","Peque","Pueblorrico","Puerto Berrío","Puerto Nare","Puerto Triunfo","Remedios","Retiro","Rionegro","Sabanalarga","Sabaneta","Salgar","San Andrés de Cuerquia","San Carlos","San Francisco","San Jerónimo","San José de la Montaña","San Juan de Urabá","San Luis","San Pedro de los Milagros","San Pedro de Urabá","San Rafael","San Roque","San Vicente Ferrer","Santa Bárbara","Santa Rosa de Osos","Santo Domingo","El Santuario","Segovia","Sonsón","Sopetrán","Tadó","Tarazá","Tarso","Titiribí","Toledo","Turbo","Uramita","Urrao","Valdivia","Valparaíso","Vegachí","Venecia","Vigía del Fuerte","Yalí","Yarumal","Yolombó","Yondó","Zaragoza"],
             "Arauca": ["Arauca","Arauquita","Cravo Norte","Fortul","Puerto Rondón","Saravena","Tame"],
             "Atlántico": ["Barranquilla","Baranoa","Campo de la Cruz","Candelaria","Galapa","Juan de Acosta","Luruaco","Malambo","Manatí","Palmar de Varela","Piojó","Polonuevo","Ponedera","Puerto Colombia","Repelón","Sabanagrande","Sabanalarga","Santa Lucía","Santo Tomás","Soledad","Suan","Tubará","Usiacurí"],
             "Bolívar": ["Cartagena de Indias","Achí","Altos del Rosario","Arenal","Arjona","Arroyohondo","Barranco de Loba","Calamar","Cantagallo","Cicuco","Clemencia","Córdoba","El Carmen de Bolívar","El Guamo","El Peñón","Hatillo de Loba","Magangué","Mahates","Margarita","María La Baja","Mompós","Montecristo","Morales","Norosí","Pinillos","Regidor","Río Viejo","San Cristóbal","San Estanislao","San Fernando","San Jacinto","San Jacinto del Cauca","San Juan Nepomuceno","San Martín de Loba","San Pablo","Santa Catalina","Santa Rosa","Santa Rosa del Sur","Simití","Soplaviento","Talaigua Nuevo","Tiquisio","Turbaco","Turbaná","Zambrano"],
@@ -1257,10 +1392,30 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // --- Nuevas funciones para la galería de productos ---
+        function updateProductPrices() {
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(card => {
+                const originalPriceEl = card.querySelector('.original-price');
+                const discountedPriceEl = card.querySelector('.discounted-price');
+                const originalPrice = parseFloat(originalPriceEl.dataset.price);
+
+                if (!isNaN(originalPrice) && originalPrice > 0) {
+                    const discountedPrice = originalPrice * 0.8; // 20% de descuento
+                    originalPriceEl.textContent = `$${originalPrice.toLocaleString('es-CO')}`;
+                    discountedPriceEl.textContent = `$${discountedPrice.toLocaleString('es-CO')}`;
+                } else {
+                    originalPriceEl.textContent = 'Precio no disponible';
+                    discountedPriceEl.textContent = '';
+                }
+            });
+        }
+
         // Llamar a la función al cargar la página
         window.onload = () => {
             updateCountdown();
             createBouncingText();
+            updateProductPrices();
             
             // Deshabilitar el campo de ciudad al inicio
             ciudadSelect.disabled = true;
